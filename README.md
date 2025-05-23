@@ -1,94 +1,116 @@
-### 📝 DEFINICIÓN DE OBJETIVOS
----------------------------
+<h1 align="center">Análisis de Hosts con mayor facturación en Madrid</h1>
 
-**Objetivo:** ***¿Cuál es el objetivo o pregunta(s) central(es) de la visualización? ¿Qué pregunta quieres responder?*** 
+<div align="center">
+  <img src="https://img.shields.io/badge/Herramienta-Tableau-green.svg" alt="Tool Badge"/>
+  <a href="https://public.tableau.com/views/Top10hostsmayorfacturacinMadrid/Dashboard1?:language=es-ES&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
+    <img src="https://img.shields.io/badge/Enlace-Ver en Tableau Public-blue.svg" alt="Link Badge"/>
+  </a>
+</div>
 
-Localizar los hosts más rentables para Airbnb, según su facturación promedio.
+<br>
 
-**Definición de KPI:**
-- **Nombre:** Facturación promedio de cada host y clasificación de hosts en rangos de facturación.
-- **Objetivo:** Identificar los 10 hosts más rentables en la plataforma.
-- **Definición:** El KPI se calcula multiplicando el promedio de precio de los alojamientos de cada host por el promedio del número de veces que se alquilan.
-- **Visualización:** Utilizar un gráfico de barras para representar la facturación promedio de cada host.
-- **Gráfico secundario de apoyo:** Incluir un mapa para mostrar la ubicación geográfica de los alojamientos de los hosts destacados.
-- **Fuente de datos:** Los datos provienen de Airbnb y también se utiliza el campo "n_veces_alquilado".
+<p align="center">Este proyecto tiene como objetivo identificar a los hosts más rentables en la ciudad de Madrid, utilizando <strong>visualizaciones interactivas</strong> desarrolladas en <strong>Tableau</strong>. El análisis permite evaluar la concentración de ingresos, la ubicación geográfica de los alojamientos y los factores asociados al éxito económico de ciertos perfiles de host.</p>
 
-**Usuarios:** ***¿Quién es el público objetivo?*** El equipo directivo de Airbnb.
+<br>
 
-**Comportamiento:** ***¿Qué datos se utilizarán y qué conocimientos se pueden extraer de ellos?***
+## Tabla de contenidos
 
-El objetivo principal es calcular el promedio de facturación de los 10 mejores hosts de Airbnb y determinar cuántos alojamientos tienen dentro de la plataforma. Además, como objetivo secundario, se busca conocer el número total de reseñas y la valoración promedio de cada uno de esos hosts. Estos datos son relevantes para evaluar la viabilidad de implementar un sistema de recompensa en la plataforma dirigido a estos hosts destacados, con el propósito de fomentar su continuo uso y participación en Airbnb.
+- [Objetivo del proyecto](#objetivo-del-proyecto)
+- [Fuentes de datos](#fuentes-de-datos)
+- [Metodología](#metodología)
+- [Visualizaciones clave](#visualizaciones-clave)
+- [Principales insights](#principales-insights)
+- [Conclusiones](#conclusiones)
+- [Dashboard interactivo](#dashboard-interactivo)
 
-**Frecuencia de uso:** Mensualmente
+## Objetivo del proyecto
 
-**Conclusión**
----------------
+Analizar la **facturación promedio** de los hosts de Airbnb en Madrid y establecer un **ranking de los 10 hosts más rentables**. Esto permite proponer estrategias de retención y mejora de la plataforma para los superhosts, así como entender su localización y perfil.
 
-Pensando en la implementación de una metodología ágil, se establecen los siguientes objetivos:
+## Fuentes de datos
 
-1. Como analista del mercado de inmuebles turísticos,
-2. Quiero generar un informe y gráficos que muestren los 10 mejores hosts de Airbnb, clasificados según su promedio de facturación,
-3. Con el fin de establecer sistemas de recompensa para estos usuarios,
-4. Con el objetivo de fomentar su continua participación y utilización de la plataforma.
+Se utilizaron dos datasets en formato CSV:
 
+1. `airbnb-listings-madrid.csv` – Contiene 10.243 registros y 89 campos sobre alojamientos en Madrid.
+2. `nveces_alquilado.csv` – Número promedio de veces que cada alojamiento fue alquilado.
 
-Enfoque Ágil:
+Ambos fueron combinados en Tableau a través del campo `Host_ID`.
 
-Valorar la colaboración activa entre el equipo de análisis y los stakeholders involucrados en el mercado de inmuebles turísticos.
-Priorizar la generación de informes y gráficos que destaquen los 10 mejores hosts de Airbnb según su promedio de facturación.
-Adaptarse a los cambios y requisitos en tiempo real para garantizar la precisión y relevancia del análisis.
-Medir el éxito del proyecto a través de la efectividad de los sistemas de recompensa implementados y el aumento en la utilización de la plataforma por parte de los hosts destacados.
-Buscar la mejora continua en la generación de informes y gráficos, incorporando retroalimentación y ajustes según sea necesario.
+![Tablas en Tableau](./images/tableau-tables.png)
+![Tabla principal](./images/table-1.png)
+![Tabla secundaria](./images/table-2.png)
 
-Con esta metodología ágil, se espera lograr una mayor comprensión del rendimiento de los hosts en Airbnb, identificando a los más destacados en términos de facturación y brindando incentivos adecuados para su retención y compromiso continuo con la plataforma.
+## Metodología
 
+- Se creó un campo calculado para estimar la **facturación promedio**:
 
+  `AVG(Price) * AVG(Nº veces alquilado)`
 
+- Se categorizó a los hosts según rangos de facturación para entender su distribución.
+- Se analizaron los alojamientos de los hosts top 10 y su ubicación en el mapa.
+- Se incluyeron detalles adicionales como número de reviews y valoración media en los tooltips.
 
-### 📊 FACTURACIÓN PROMEDIO
----------------------------
+## Visualizaciones clave
 
-Se crea un **campo calculado** llamado **“facturación promedio"** utilizando la fórmula `AVG([Price]) * AVG([Nº veces alquilado].`
+- **Ranking de los 10 hosts con mayor facturación promedio**
+  - Gráfico de barras horizontal.
+  - Se han agrupado por rangos de facturación.
+- **Relación entre hosts y sus IDs de alojamiento**
 
-Esta fórmula combina el precio promedio y el número de veces alquilado promedio para calcular un valor estimado de la facturación promedio por alojamiento. Sin embargo, se tienen en cuenta algunas consideraciones:
+  - Identificación de IDs de alojamientos.
+  - Permite evaluar la diversificación del ingreso por alojamiento.
 
-**1. Interpretación:** La facturación calculada de esta manera es un valor estimado promedio y ***puede no reflejar la realidad exacta para cada alojamiento individual.*** Es importante tener en cuenta que el cálculo asume que el precio promedio y el número de veces alquilado promedio son representativos de todos los alojamientos.
+- **Distribución por rango de facturación**
+  - Gráfico de distribución.
+  - Agrupa todos los hosts en cinco tramos:
+    - `< 5.000€`
+    - `5.000–9.999€`
+    - `10.000–14.999€`
+    - `15.000–20.000€`
+    - `> 20.000€`
+  - Permite entender la **curva de ingresos** y la proporción de superhosts.
+- **Mapa geográfico**
+  - Muestra la ubicación de los alojamientos de los principales hosts.
+  - Visualización de concentración geográfica en zonas de alta rentabilidad.
+  - Se ha utilizado el campo `neighbourhood` para la ubicación.
 
-**2. Agregación:** Se tiene en cuenta que se está calculando el promedio del precio y el promedio del número de veces alquilado para todos los alojamientos de la tabla. Esto puede ser útil para obtener una idea general de la facturación promedio, pero al agregar los datos de todos los alojamientos, puede haber ***pérdida de información*** sobre las variaciones individuales.
+<br>
 
-**3. Contexto y análisis adicional:** La facturación promedio por alojamiento puede ser un dato útil para analizar y comparar diferentes hosts o realizar análisis generales. Sin embargo, también puede ser beneficioso realizar análisis más detallados y segmentados según el tipo de alojamiento, la ubicación geográfica u otros factores relevantes para obtener una visión más completa.
+![Dashboard Tableau](./images/dashboard-top-10-hosts-hostname.png)
+![Dashboard Tableau](./images/dashboard-top-10-hosts-map.png)
 
+<br>
 
+## Principales insights
 
+- Gabriel Asdrúbal es el host con mayor facturación promedio estimada, seguido de Yuho y José Luis y Ana.
+- La mayor parte de los hosts factura menos de 5000€ anuales, pero un pequeño grupo concentra ingresos elevados.
+- Los hosts más rentables suelen tener múltiples alojamientos o una alta rotación.
+- La zona de **Recoletos (28001)** concentra alojamientos de alto rendimiento.
 
-### 📊 GRÁFICO DE BARRAS
----------------------------
+## Aplicabilidad Estratégica
 
-Se utiliza el **gráfico de barras** para comparar la facturación promedio entre diferentes hosts.
+Este análisis permite a la empresa tomar decisiones como:
 
-Al organizar los datos de esta manera, se puede identificar fácilmente qué hosts tienen una facturación más alta en promedio y cuáles tienen una facturación más baja. También se puede explorar cualquier patrón o tendencia en la facturación de los distintos hosts.
+- Proponer un **sistema de incentivos** o comisiones preferentes para superhosts.
+- Identificar **patrones geográficos de éxito** y replicarlos.
+- Detectar oportunidades de expansión o inversión local.
+- Comunicar **recomendaciones personalizadas** a hosts en crecimiento.
 
+## Limitaciones y Consideraciones
 
-Algunas mejoras en la visualización:
+- El análisis depende de la calidad del dato _"nº veces alquilado"_, que es una estimación y puede variar en el tiempo.
+- No se ha segmentado por tipo de alojamiento (habitaciones privadas, pisos completos, etc.), lo cual podría ser una mejora futura.
+- Las fechas de los datos son limitadas a un snapshot del año **2017**; podría enriquecerse con histórico temporal.
 
-**1. Ordenar los hosts por facturación:** Se ordena la columna de facturación en orden descendente para resaltar los hosts con la facturación más alta.
+## Conclusiones
 
-**2. Agregar colores o barras de referencia:** Se utilizan colores para resaltar visualmente los valores más altos y más bajos de facturación, lo que facilitará la identificación de los hosts más destacados.
+Este análisis demuestra cómo, a través de herramientas como **[Tableau](https://www.tableau.com/es-es)** y el uso de fuentes de datos públicas, se puede generar una visualización clara, interactiva y útil para evaluar el rendimiento económico de hosts en una plataforma como [Airbnb](https://www.airbnb.es/).
 
-**3. Incluir otras dimensiones:** Al tener información adicional sobre los hosts, como su review score rating (promedio), el número total de valoraciones o los alojamientos que ofrecen, se incluyen estas dimensiones adicionales en la descripción emergente para obtener una comprensión más completa de los factores que podrían influir en la facturación.
+## Dashboard interactivo
 
-**4. Agregar títulos y etiquetas claras:** Se escogen títulos claros en la visualización y etiquetas para las columnas y filas, de manera que sea fácil de entender y comunicar la información.
+Accede a la visualización publicada en Tableau Public:
 
+🔗 [Ver Dashboard en Tableau Public](https://public.tableau.com/views/Top10hostsmayorfacturacinMadrid/Dashboard1?:language=es-ES&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
-
-
-### 📊 RANGOS DE FACTURACIÓN
----------------------------
-
-Se crea un **campo calculado** llamado **“Rango facturación”** que utiliza la ***estructura condicional "IF-ELSEIF-ELSE"*** para categorizar los valores de facturación en diferentes rangos.
-
-La condición establece que si la facturación es menor a 5000, se asignará la etiqueta 'Facturan < 5.000'. Luego, se establecen rangos de facturación utilizando las condiciones `">= 5000 AND < 10000"`, `">= 10000 AND < 15000"` y `">= 15000 AND <= 20000"`, asignando las etiquetas correspondientes a cada rango.
-
-Finalmente, si la facturación es mayor a 20000, se asignará la etiqueta 'Facturan > 20.000'. Esto asegura que todos los valores de facturación se clasifiquen en una de las categorías establecidas.
-
-Esta fórmula es útil para analizar la distribución de los alojamientos en función de sus niveles de facturación. Se utiliza esta nueva dimensión calculada en las visualizaciones para agrupar y comparar fácilmente los alojamientos según su rango de facturación.
+![Dashboard Tableau](./images/dashboard-top-10-hosts.png)
