@@ -1,17 +1,13 @@
-<h1 align="center">Análisis de Hosts con mayor facturación en Madrid</h1>
+# Análisis de Hosts con mayor facturación en Madrid
 
-<div align="center">
+Este proyecto tiene como objetivo identificar a los hosts más rentables en la ciudad de Madrid, utilizando <strong>visualizaciones interactivas</strong> desarrolladas en <strong>Tableau</strong>. El análisis permite evaluar la concentración de ingresos, la ubicación geográfica de los alojamientos y los factores asociados al éxito económico de ciertos perfiles de host.
+
+<div>
   <img src="https://img.shields.io/badge/Herramienta-Tableau-green.svg" alt="Tool Badge"/>
   <a href="https://public.tableau.com/views/Top10hostsmayorfacturacinMadrid/Dashboard1?:language=es-ES&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">
     <img src="https://img.shields.io/badge/Enlace-Ver en Tableau Public-blue.svg" alt="Link Badge"/>
   </a>
 </div>
-
-<br>
-
-<p align="center">Este proyecto tiene como objetivo identificar a los hosts más rentables en la ciudad de Madrid, utilizando <strong>visualizaciones interactivas</strong> desarrolladas en <strong>Tableau</strong>. El análisis permite evaluar la concentración de ingresos, la ubicación geográfica de los alojamientos y los factores asociados al éxito económico de ciertos perfiles de host.</p>
-
-<br>
 
 ## Tabla de contenidos
 
@@ -76,10 +72,9 @@ Ambos fueron combinados en Tableau a través del campo `Host_ID`.
 
 <br>
 
-![Dashboard Tableau](./images/dashboard-top-10-hosts-hostname.png)
-![Dashboard Tableau](./images/dashboard-top-10-hosts-map.png)
+<img src="./images/dashboard-top-10-hosts-hostname.png"  width="500px" alt="dashboard" style="margin: 0 auto;"/>
 
-<br>
+<img src="./images/dashboard-top-10-hosts-map.png"  width="500px" alt="dashboard" style="margin: 0 auto;"/>
 
 ## Principales insights
 
@@ -113,4 +108,4 @@ Accede a la visualización publicada en Tableau Public:
 
 🔗 [Ver Dashboard en Tableau Public](https://public.tableau.com/views/Top10hostsmayorfacturacinMadrid/Dashboard1?:language=es-ES&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
-![Dashboard Tableau](./images/dashboard-top-10-hosts.png)
+<img src="./images/dashboard-top-10-hosts.png"  width="500px" alt="dashboard" styles="margin: 0 auto;"/>
